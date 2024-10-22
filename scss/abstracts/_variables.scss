@@ -1,0 +1,49 @@
+// Aquí puedes definir todas tus variables globales
+$primary-font: 'Arial', sans-serif;
+$secondary-font: 'Verdana', sans-serif;
+
+$font-family-main: 'Arial', sans-serif;
+$font-family-heading: 'Press Start 2P', cursive;
+$font-size-large: 32px;
+$font-size-medium: 20px;
+$font-size-small: 15px;
+
+$main-bg-color: #f0f0f0;
+$accent-color: #ff5733;
+$light-gray: #ccc;
+
+// Variables de colores
+$yellow: yellow;
+$red: red;
+$purple: purple;
+$green: green;
+$white: white;
+$black: black;
+$mustard: #FFDB58; // Color mostaza
+$orange: orange;
+
+body {
+    font-family: $font-family-main;
+    background-color: $yellow;
+    color: $black;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  section {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: $font-size-large;
+    font-family: $font-family-heading;
+  }
+  

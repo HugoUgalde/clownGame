@@ -1,0 +1,16 @@
+@use '../abstracts/variables';
+
+.icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+}
+
+.icon--inactive {
+  opacity: 0.5;
+}
+
+.icon--active {
+  opacity: 1;
+  background-color: variables.$accent-color;
+}

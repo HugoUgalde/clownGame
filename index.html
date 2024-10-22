@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circus Adventure</title>
+  <link rel="stylesheet" href="css/styles.css"> 
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Bienvenido a Circus Adventure</h1>
+  </header>
+
+  <section id="main-section">
+    <h2>Instrucciones</h2>
+    <p>Guía al payaso a través de plataformas evitando enemigos. Usa sus habilidades especiales para sobrevivir.</p>
+  </section>
+
+  <section>
+    <h2>Mecánicas</h2>
+    <ul>
+      <li>Lanzar bolas de malabarismo para derrotar enemigos.</li>
+      <li>Activar globos para cambiar la gravedad y flotar más alto.</li>
+      <li>Montar una pelota para volverte invulnerable.</li>
+    </ul>
+  </section>
+
+
+  <section>
+    <button id="play-button">Jugar</button>
+  </section>
+
+  <script>
+    document.getElementById('play-button').addEventListener('click', function() {
+      window.location.href = 'game.html'; // Redirige a la página del juego
+    });
+  </script>
+</body>
+</html>

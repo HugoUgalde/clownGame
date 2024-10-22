@@ -1,0 +1,39 @@
+@use '../abstracts/variables' as var;
+
+@media (max-width: 767px) {
+  body {
+    background-color: var.$purple; // Cambia el fondo para pantallas pequeñas
+    font-size: var.$font-size-small;
+  }
+
+  h1 {
+    font-size: var.$font-size-medium;
+  }
+
+  h2 {
+    font-size: var.$font-size-small;
+  }
+
+  #play-button {
+    padding: 8px 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    background-color: var.$mustard;
+    font-size: var.$font-size-medium;
+  }
+
+  h1 {
+    font-size: var.$font-size-large;
+  }
+
+  h2 {
+    font-size: var.$font-size-medium;
+  }
+
+  #play-button {
+    padding: 12px 24px;
+  }
+}

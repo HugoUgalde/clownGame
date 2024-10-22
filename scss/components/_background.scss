@@ -1,0 +1,12 @@
+@use '../abstracts/mixins';
+@use '../abstracts/variables';
+
+body {
+  background: repeating-linear-gradient(
+    45deg,
+    variables.$red,
+    variables.$red 10px,
+    variables.$white 10px,
+    variables.$white 20px
+  );  
+}
