@@ -12,13 +12,8 @@ header {
     font-size: 48px;
   }
 
-  p {
-    margin-top: 20px;
-    font-size: 18px;
-    color: variables.$light-gray;
-  }
 
-  a#startGame {
+  #startGame {
     @include buttons.primary-button;
     margin-top: 30px;
     display: inline-block;

@@ -28,7 +28,7 @@ let jugglingCount = 3, invulnerableTimer, healthBar;
 let cursors, invulnerableIcon;
 let abilityIcons = [];
 
-
+ 
 function preload() {
   // Cargar imágenes
   this.load.image('player', 'game-assets/img/character_idle.png');
@@ -45,33 +45,31 @@ function preload() {
 function generateRandomPlatforms(scene) {
   platforms = scene.physics.add.staticGroup(); // Crear grupo de plataformas
 
-  // Ahora generar plataformas en niveles más altos
   const extraPlatformGroups = [10]; // Cantidad de plataformas por grupo
   let currentY = 800; // Posición Y inicial para las plataformas adicionales
   let leftToRight = true; // Variable para controlar la dirección
 
-  for (let i = 0; i < 5; i++) { // Generar 5 niveles adicionales
-    const groupSize = extraPlatformGroups[Phaser.Math.Between(0, extraPlatformGroups.length - 1)]; // Elegir un grupo aleatorio
-    let baseX;
+  for (let i = 0; i < 5; i++) { // Generar niveles adicionales
+    const groupSize = extraPlatformGroups[Phaser.Math.Between(0, extraPlatformGroups.length - 1)];
+    let baseX; // Inicializar baseX
 
-    // Determinar la dirección de generación
     if (leftToRight) {
-      baseX = 30; // Posición X inicial para la nueva línea de plataformas (izquierda)
+      baseX = 20; // Posición X inicial para la nueva línea de plataformas (izquierda)
+      for (let j = 0; j < groupSize; j++) {
+        const x = baseX + (j * 100); // Crear plataformas de izquierda a derecha
+        platforms.create(x, currentY, 'platform').setScale(0.5).refreshBody();
+      }
     } else {
-      baseX = 30 + (groupSize - 1) * 80; // Posición X inicial para la nueva línea de plataformas (derecha)
-    }
-
-    for (let j = 0; j < groupSize; j++) {
-      // Calcular la posición X según la dirección
-      const x = leftToRight ? baseX + (j * 100) : baseX - (j * 100); 
-
-      // Crear plataforma en la nueva línea
-      platforms.create(x, currentY, 'platform').setScale(0.5).refreshBody();
+      baseX = 30 + (groupSize - 1) * 90; // Posición X inicial para la nueva línea (derecha)
+      for (let j = 0; j < groupSize; j++) {
+        const x = baseX - (j * 100); // Crear plataformas de derecha a izquierda
+        platforms.create(x, currentY, 'platform').setScale(0.5).refreshBody();
+      }
     }
 
     // Alternar la dirección para la siguiente fila
     leftToRight = !leftToRight;
-    currentY -= 200; // Bajar para la siguiente línea de plataformas
+    currentY -= 200; 
   }
 }
 
@@ -141,7 +139,7 @@ function activateAbility(ability) {
 function createPlayer(scene) {
   player = scene.physics.add.sprite(100, 450, 'player');
   player.setBounce(0.2); // Rebotar un poco
-  player.setCollideWorldBounds(true, true, true, false); // No salir de los límites del mundo
+  player.setCollideWorldBounds(true); // No salir de los límites del mundo
 }
 
 
@@ -158,7 +156,19 @@ function create() {
   createPlayer(this); 
 
   // Añadir colisión entre jugador y plataformas
-  this.physics.add.collider(player, platforms);
+  this.physics.add.collider(player, platforms, null, checkIfFalling, this);
+
+
+  function checkIfFalling(player, platforms) {
+    // Si el jugador está cayendo (velocidad positiva en el eje Y), permitir la colisión
+    if (player.body.velocity.y > 0) {
+        return true;  // Permitir colisión
+    } else {
+        return false;  // No colisionar
+    }
+}
+
+  
 
 
   // Crear enemigos
@@ -179,11 +189,14 @@ function create() {
   });
 
   // Texto y barra de vida
-  lifeText = this.add.text(1400, 20, 'Vidas: ' + life, { fontSize: '24px', fill: '#fff' });
-  healthBar = this.add.graphics();
+lifeText = this.add.text(650, 20, 'Vidas: ' + life, { fontSize: '24px', fill: '#fff' });
+healthBar = this.add.graphics();
   updateHealthBar(this);
   spawnAbilityIcon(this); 
 }
+
+
+
 
 function createEnemies(scene) {
   enemies = scene.physics.add.group(); // Asegúrate de inicializar el grupo aquí
@@ -216,13 +229,17 @@ if (abilityIcons.length < 1) {
 
 
 function updateHealthBar(scene) {
-  healthBar.clear();
+  healthBar.clear(false);
   healthBar.fillStyle(0xff0000, 1); // Rojo para la salud perdida
   healthBar.fillRect(650, 50, 100, 20); // Fondo de la barra
 
   healthBar.fillStyle(0x00ff00, 1); // Verde para la salud actual
   healthBar.fillRect(650, 50, life * 33.33, 20); // Ajusta el ancho según la vida
 }
+
+// Texto y barra de vida
+lifeText = this.add.text(650, 20, 'Vidas: ' + life, { fontSize: '24px', fill: '#fff' });
+
 
 
 function handleMovement(cursors, player) {

@@ -5,7 +5,7 @@ function handleAbilities(scene) {
     throwJugglingBalls(scene);
   }
 
-  // Activar gravedad solo si es necesario
+  //  Comprueba la gravedad
   if (gravityChanged) {
     scene.physics.world.gravity.y = 250; // Cambiar gravedad
   } else {
@@ -33,21 +33,21 @@ function throwJugglingBalls(scene) {
 }
 
 function changeGravity(scene) {
-  if (!gravityChanged) { // Solo cambiar si no está cambiado
+  if (!gravityChanged) { // comprueba 
     gravityChanged = true;
     scene.physics.world.gravity.y = 250; // Cambiar gravedad
   }
 }
 
 function resetGravity(scene) {
-  if (gravityChanged) { // Solo restaurar si ha cambiado
+  if (gravityChanged) { // cambia si no ha cambiado
     gravityChanged = false;
     scene.physics.world.gravity.y = 500; // Restaurar gravedad
   }
 }
 
 function activateInvulnerability() {
-  if (!invulnerable) { // Solo activar si no está ya activo
+  if (!invulnerable) { 
     invulnerable = true;
     invulnerableIcon.setAlpha(1);
     

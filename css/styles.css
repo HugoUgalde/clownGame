@@ -12,13 +12,6 @@ header {
   padding: 20px;
 }
 
-section {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 20px;
-  text-align: center;
-}
-
 h1 {
   font-size: 32px;
   font-family: "Press Start 2P", cursive;
@@ -44,12 +37,6 @@ body {
 
 header {
   padding: 50px;
-}
-
-body {
-  font-family: "Press Start 2P", cursive;
-  background-color: yellow;
-  color: black;
 }
 
 h1 {
@@ -113,15 +100,6 @@ h1 {
   }
 }
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /* Para pantallas más pequeñas */
 @media (max-width: 768px) {
   h1 {
@@ -141,7 +119,16 @@ body {
   }
 }
 #play-button {
-  background-color: aqua;
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+#play-button:hover {
+  background-color: gray;
 }
 
 .icon {
@@ -247,13 +234,8 @@ header h1 {
   color: #ff5733;
   font-size: 48px;
 }
-header p {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #ccc;
-}
-header a#startGame {
-  background-color: orange;
+header #startGame {
+  background-color: 0;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -261,12 +243,30 @@ header a#startGame {
   margin-top: 30px;
   display: inline-block;
 }
-header a#startGame:hover {
-  background-color: #cc8400;
+header #startGame:hover {
+  background-color: #cc0000;
 }
 
 body {
   background: repeating-linear-gradient(45deg, red, red 10px, white 10px, white 20px);
+}
+
+#main-section {
+  margin: 2;
+  padding: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#secondary-section {
+  margin: 2;
+  padding: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 #gameContainer {
@@ -323,40 +323,10 @@ body {
     padding: 12px 24px;
   }
 }
-body {
-  background-color: yellow;
-  color: black;
-  font-family: "Press Start 2P", cursive;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
 h1 {
   font-size: 32px;
   color: red;
   margin-top: 20px;
-}
-
-h2 {
-  font-size: 20px;
-  color: green;
-}
-
-button {
-  background-color: orange;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 15px;
-}
-button:hover {
-  background-color: red;
 }
 
 /*# sourceMappingURL=styles.css.map */
